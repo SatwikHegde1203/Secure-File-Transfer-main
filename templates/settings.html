@@ -1,0 +1,118 @@
+{% extends "layout.html" %}
+
+{% block title %}Settings{% endblock %}
+
+{% block content %}
+<div class="glass-card wide">
+    <h2>Settings</h2>
+
+    <div class="settings-container" style="display: flex; gap: 2rem;">
+        <!-- Sidebar -->
+        <div class="settings-sidebar" style="width: 200px; border-right: 1px solid var(--glass-border);">
+            <button class="tab-btn active" onclick="openTab(event, 'profile')">Profile</button>
+            <button class="tab-btn" onclick="openTab(event, 'appearance')">Appearance</button>
+            <button class="tab-btn" onclick="openTab(event, 'about')">About Us</button>
+        </div>
+
+        <!-- Content -->
+        <div class="settings-content" style="flex: 1;">
+
+            <!-- Profile Tab -->
+            <div id="profile" class="tab-content active">
+                <h3>User Profile</h3>
+                <div class="stats-grid" style="margin-top: 1rem;">
+                    <div class="stat-card">
+                        <div class="stat-number">{{ username }}</div>
+                        <div class="stat-label">Username</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">{{ total_encrypted }}</div>
+                        <div class="stat-label">Files Encrypted</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">{{ total_decrypted }}</div>
+                        <div class="stat-label">Files Decrypted</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Appearance Tab -->
+            <div id="appearance" class="tab-content" style="display: none;">
+                <h3>Appearance</h3>
+                <p style="color: var(--text-muted); margin-bottom: 1rem;">Customize the look and feel of the
+                    application.</p>
+
+                <div class="form-group">
+                    <label style="display: block; margin-bottom: 0.5rem;">Theme</label>
+                    <select id="theme-select" onchange="changeTheme(this.value)"
+                        style="width: 100%; padding: 10px; background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); color: var(--text-color); border-radius: 5px;">
+                        <option value="system">System Default</option>
+                        <option value="light">Light Mode</option>
+                        <option value="dark">Dark Mode</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- About Tab -->
+            <div id="about" class="tab-content" style="display: none;">
+                <h3>About Us</h3>
+                <p style="line-height: 1.6; color: var(--text-muted);">
+                    Secure Transfer is dedicated to providing top-tier file security solutions.
+                    Our mission is to ensure that your data remains private and secure in an increasingly digital world.
+                </p>
+                <p style="line-height: 1.6; color: var(--text-muted); margin-top: 1rem;">
+                    Version: 2.0.0<br>
+                    Developed by:<br>
+                    1. Satwik Hegde<br>
+                    2. Abhinav Kishore<br>
+                    3. Anisha Rawat
+                </p>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<style>
+    .tab-btn {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        text-align: left;
+        background: none;
+        border: none;
+        color: var(--text-muted);
+        cursor: pointer;
+        font-size: 1rem;
+        transition: color 0.3s;
+    }
+
+    .tab-btn:hover,
+    .tab-btn.active {
+        color: var(--primary-color);
+        background: rgba(255, 255, 255, 0.02);
+    }
+</style>
+
+<script>
+    function openTab(evt, tabName) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tab-content");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tab-btn");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(tabName).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+
+    // Initialize theme select based on current theme
+    document.addEventListener('DOMContentLoaded', () => {
+        const savedTheme = localStorage.getItem('theme') || 'system';
+        document.getElementById('theme-select').value = savedTheme;
+    });
+</script>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+
+{% block title %}Decrypt File{% endblock %}
+
+{% block content %}
+<div class="glass-card">
+    <h2>Decrypt File</h2>
+    <form method="POST" enctype="multipart/form-data" class="process-form">
+        <div class="form-group">
+            <label for="file">Upload Encrypted File</label>
+            <input type="file" id="file" name="file" required>
+        </div>
+        <button type="submit">Decrypt</button>
+    </form>
+</div>
+{% endblock %}

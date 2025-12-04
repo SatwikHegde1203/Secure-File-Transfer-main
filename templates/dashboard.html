@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<div class="glass-card wide">
+    <h2>Welcome to Secure Transfer</h2>
+    <div style="text-align: left; line-height: 1.6; color: var(--text-color);">
+        <p style="margin-bottom: 1rem;">
+            Secure Transfer is a state-of-the-art file encryption platform designed to protect your sensitive data.
+            Whether you are sharing confidential documents, private audio recordings, or personal videos, our
+            military-grade encryption ensures that your files remain accessible only to you and your intended
+            recipients.
+        </p>
+
+        <h3 style="color: var(--primary-color); margin-top: 1.5rem; margin-bottom: 0.5rem;">Key Features:</h3>
+        <ul style="list-style-type: none; padding-left: 0;">
+            <li style="margin-bottom: 0.5rem;">🔒 <strong>Advanced Encryption:</strong> Uses Fernet symmetric encryption
+                to lock your files securely.</li>
+            <li style="margin-bottom: 0.5rem;">🎵 <strong>Multi-Format Support:</strong> Specialized handling for Audio,
+                Video, and Document files.</li>
+            <li style="margin-bottom: 0.5rem;">📜 <strong>Activity History:</strong> Keep track of every encryption and
+                decryption action.</li>
+            <li style="margin-bottom: 0.5rem;">⚡ <strong>Fast Processing:</strong> Optimized algorithms for quick file
+                handling.</li>
+        </ul>
+
+        <h3 style="color: var(--primary-color); margin-top: 1.5rem; margin-bottom: 0.5rem;">How to Use:</h3>
+        <p>
+            Navigate using the header menu to select the type of file you wish to process.
+            Each section allows you to both <strong>Encrypt</strong> and <strong>Decrypt</strong> files of that specific
+            category.
+        </p>
+    </div>
+</div>
+{% endblock %}
